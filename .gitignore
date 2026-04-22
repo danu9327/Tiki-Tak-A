@@ -1,6 +1,12 @@
 # API Key
 .env
 
+# data가 너무 커져요
+data/rag/location/
+data/rag/statistics/
+data/risk/
+data/sft/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
