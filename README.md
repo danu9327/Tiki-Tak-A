@@ -14,5 +14,6 @@
 #### 다운로드 받은 데이터 중 특정 포맷 파일만 옮기기
 #### -type f -name "*.json" -exec mv {} data/risk/psych/ \;
 
-
+### API Key랑 27개 각 데이터 url를 통해서 .json으로 data/rag로 분류해서 수집
+### src/fetch_api.py로 실행
 
