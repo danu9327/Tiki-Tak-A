@@ -1,0 +1,303 @@
+{
+	"info": {
+		"category": "한국어SNS 멀티턴 대화",
+		"id": "038372",
+		"topic": "스포츠 및 e스포츠",
+		"keyword": "이강인 아시안게임 '황선홍호' 합류 확정",
+		"speaker": {
+			"speakerAId": "0062",
+			"speakerASex": "여자",
+			"speakerAAge": "30",
+			"speakerBId": "0119",
+			"speakerBSex": "남자",
+			"speakerBAge": "30",
+			"speakerCId": null,
+			"speakerCSex": null,
+			"speakerCAge": null
+		}
+	},
+	"utterances": [
+		{
+			"speaker": "speakerA",
+			"text": "드디어 아시안게임 개막했다~. 재밌는 경기 실컷 볼 수 있어서 너무 신나ㅎㅎ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				},
+				{
+					"key": "대회/리그",
+					"value": "아시안게임"
+				}
+			],
+			"turn_id": "038372-1",
+			"utterance_id": "038372.1"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "ㅎㅎ나도 그래. 어떤 꾸르잼 경기를 볼 수 있을지 너무 기대된다.",
+			"new_word": "꾸르잼",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "038372-1",
+			"utterance_id": "038372.2"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "난 축구가 제일 기대돼. 이번 2022 항저우아시안게임에 이강인 선수도 합류한대?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "이강인"
+				},
+				{
+					"key": "종목",
+					"value": "축구"
+				},
+				{
+					"key": "대회/리그",
+					"value": "2022 항저우아시안게임"
+				}
+			],
+			"turn_id": "038372-2",
+			"utterance_id": "038372.3"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "당근이지. 내가 방금 전에 이강인 선수가 이번 아시안게임 축구 대표팀에 합류한다는 소식 뉴스에서 보고 왔엉.",
+			"new_word": "당근",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "대회/리그",
+					"value": "아시안게임"
+				},
+				{
+					"key": "인물",
+					"value": "이강인"
+				},
+				{
+					"key": "장소/조직",
+					"value": "축구 대표팀"
+				}
+			],
+			"turn_id": "038372-2",
+			"utterance_id": "038372.4"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "헐랭. 너무 좋다~. 아시안게임 대표팀에는 언제 합류한대?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "장소/조직",
+					"value": "아시안게임 대표팀"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "038372-3",
+			"utterance_id": "038372.5"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "도르트문트와의 유럽축구연맹 챔피언스리그 홈 경기를 마친 뒤에 바로 합류하기로 했댕. 현재 이강인 선수가 소속된 PSG랑 협의했더라고.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "사건",
+					"value": "유럽축구연맹 챔피언스리그 홈 경기"
+				},
+				{
+					"key": "인물",
+					"value": "이강인"
+				},
+				{
+					"key": "장소/조직",
+					"value": "PSG; 도르트문트"
+				}
+			],
+			"turn_id": "038372-3",
+			"utterance_id": "038372.6"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "엥, 왜 PSG랑 협의를 해? 선수가 아시안게임에 자국 국가대표로 출전하는 거면 무조건 차출 해야 하는 거 아님?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "장소/조직",
+					"value": "PSG"
+				},
+				{
+					"key": "대회/리그",
+					"value": "아시안게임"
+				}
+			],
+			"turn_id": "038372-4",
+			"utterance_id": "038372.7"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "아시안게임은 국제축구연맹, 그러니까 FIFA 공식 일정에 따른 대회가 아니라 차출 의무가 없댕.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "대회/리그",
+					"value": "아시안게임"
+				},
+				{
+					"key": "장소/조직",
+					"value": "FIFA; 국제축구연맹"
+				}
+			],
+			"turn_id": "038372-4",
+			"utterance_id": "038372.8"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "아..그렇구낭. 어쨌든 이강인 선수가 황선홍호에 합류해서 너무 다행이다ㅠㅠ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "이강인"
+				},
+				{
+					"key": "장소/조직",
+					"value": "황선홍호"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "038372-5",
+			"utterance_id": "038372.9"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "ㅋㅋ그러겡. 덕분에 이번 아시안게임 축구 경기도 진짜 재밌을 듯.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "대회/리그",
+					"value": "아시안게임"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "038372-5",
+			"utterance_id": "038372.10"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "진짜 설렌다.. 이강인 선수가 뛰어난 선수라고 하던데, 실력이 어느 정도야?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "이강인"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "038372-6",
+			"utterance_id": "038372.11"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "이강인 선수는 2019년 국제축구연맹 20세 이하 월드컵 준우승을 이끌며 대회 최우수선수에게 주는 골든볼을 수상한 전적이 있어. 그만큼 실력이 뛰어난 선수임.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "대회/리그",
+					"value": "2019년 국제축구연맹 20세 이하 월드컵"
+				},
+				{
+					"key": "인물",
+					"value": "이강인"
+				}
+			],
+			"turn_id": "038372-6",
+			"utterance_id": "038372.12"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "그렇구낭. 혹시 최근에 부상을 입었다거나 하진 않았지?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [],
+			"turn_id": "038372-7",
+			"utterance_id": "038372.13"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "최근 경기에서 왼쪽 대퇴사두근을 다쳐서 9월 영국에서 열린 A매치 웨일스, 사우디 아라비아 2연전에 결장했었엉.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "날짜/기간/계절",
+					"value": "9월"
+				},
+				{
+					"key": "대회/리그",
+					"value": "A매치 웨일스; 사우디 아라비아 2연전"
+				},
+				{
+					"key": "지역",
+					"value": "영국"
+				}
+			],
+			"turn_id": "038372-7",
+			"utterance_id": "038372.14"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "헐.. 몸 상태는 괜찮은가ㅠㅠ. 아시안게임에서는 다치지 않았음 좋겠다ㅠㅠ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "대회/리그",
+					"value": "아시안게임"
+				}
+			],
+			"turn_id": "038372-8",
+			"utterance_id": "038372.15"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "그러게.. 우리가 열심히 응원해주자!",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [],
+			"turn_id": "038372-8",
+			"utterance_id": "038372.16"
+		}
+	]
+}

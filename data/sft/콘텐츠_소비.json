@@ -1,0 +1,377 @@
+{
+	"info": {
+		"category": "한국어SNS 멀티턴 대화",
+		"id": "019842",
+		"topic": "콘텐츠 소비",
+		"keyword": "태어난 김에 세계일주",
+		"speaker": {
+			"speakerAId": "0037",
+			"speakerASex": "여자",
+			"speakerAAge": "20",
+			"speakerBId": "0102",
+			"speakerBSex": "남자",
+			"speakerBAge": "20",
+			"speakerCId": "0146",
+			"speakerCSex": "여자",
+			"speakerCAge": "20"
+		}
+	},
+	"utterances": [
+		{
+			"speaker": "speakerA",
+			"text": "날씨도 좋은데 어디 놀러가면 짜짜 좋을 텐데 너희들은 어디 놀러 안 가?",
+			"new_word": "짜짜",
+			"speech_act": "친교 및 잡담",
+			"slot": [],
+			"turn_id": "019842-1",
+			"utterance_id": "019842.1"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "난 요즘 야근 시즌이라서 못 가고 있음ㅠㅠ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "평가/후기/감상",
+					"value": "no"
+				}
+			],
+			"turn_id": "019842-1",
+			"utterance_id": "019842.2"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "나는 이번에 휴가 받아서 놀러 가려고 하는데 마땅한 곳이 없네.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "날짜/기간/계절",
+					"value": "휴가"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "no"
+				}
+			],
+			"turn_id": "019842-1",
+			"utterance_id": "019842.3"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "인도 여행 어때? 태계일주 보니까 재밌어 보이던데.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "작품",
+					"value": "태계일주"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-2",
+			"utterance_id": "019842.4"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "ㅇㅈ. 나도 다음에 여행 가면 인도로 갈 거임!",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "지역",
+					"value": "인도"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-2",
+			"utterance_id": "019842.5"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "태계일주? 그게 뭐야? 난 처음 들어보는데 설명 좀 해줘.",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "작품",
+					"value": "태계일주"
+				}
+			],
+			"turn_id": "019842-2",
+			"utterance_id": "019842.6"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "태계일주는 태어난 김에 세계일주라는 예능 프로그램을 줄인 말임!",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "작품",
+					"value": "태계일주; 태어난 김에 세계일주; 예능 프로그램"
+				}
+			],
+			"turn_id": "019842-3",
+			"utterance_id": "019842.7"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "맞아. 여기에서 인도로 여행 간 거 있는데 너무 재밌어서 요즘 인도로 놀러 가려는 사람이 많아졌어.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "지역",
+					"value": "인도"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-3",
+			"utterance_id": "019842.8"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "그래? 난 티비를 잘 안 봐서 몰랐지ㅋㅋ. 그럼 거기서 여행은 누가 가?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [],
+			"turn_id": "019842-3",
+			"utterance_id": "019842.9"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "기안84랑 빠니보틀, 덱스가 나와서 여행 다녀ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "기안84; 빠니보틀; 덱스"
+				}
+			],
+			"turn_id": "019842-4",
+			"utterance_id": "019842.10"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "그리고 여행 영상을 보면서 이야기 하는 패널들로 장도연, 쌈디, 이승훈이 나와.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "장도연; 쌈디; 이승훈"
+				}
+			],
+			"turn_id": "019842-4",
+			"utterance_id": "019842.11"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "덱스도 나와? 완전 박박이네. 나 엄청 팬이야!",
+			"new_word": "박박",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "덱스"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-4",
+			"utterance_id": "019842.12"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "나도 팬임ㅋㅋ. 근데 영상 보고 나서 기안84도 팬이 돼 버렸어.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "기안84"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-5",
+			"utterance_id": "019842.13"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "ㅇㅈ. 나도 덱스 때문에 봤는데 기안84에 입덕해버림.",
+			"new_word": "입덕",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "기안84; 덱스"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-5",
+			"utterance_id": "019842.14"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "그 정도야? 그럼 태계일주는 언제 방송해?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "작품",
+					"value": "태계일주"
+				}
+			],
+			"turn_id": "019842-5",
+			"utterance_id": "019842.15"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "6월 11일 일요일에 첫 방송을 해서 매주 일요일마다 해.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "날짜/기간/계절",
+					"value": "6월 11일 일요일; 매주 일요일"
+				}
+			],
+			"turn_id": "019842-6",
+			"utterance_id": "019842.16"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "시간은 9시 10분으로 저녁에 가족끼리 보기 아주 좋지ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "시간",
+					"value": "9시 10분; 저녁"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-6",
+			"utterance_id": "019842.17"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "일요일 저녁에 한 주를 마무리하면서 보기에 딱이네.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "시간",
+					"value": "저녁"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-6",
+			"utterance_id": "019842.18"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "맞아. 나도 요즘 이거 보면서 힐링 한다니까.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-7",
+			"utterance_id": "019842.19"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "일상에 지쳐 있다가도 재밌게 여행다니는 거 보면 너무 좋아.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "019842-7",
+			"utterance_id": "019842.20"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "나도 한번 봐야겠는걸? 어디에서 볼 수 있어?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [],
+			"turn_id": "019842-7",
+			"utterance_id": "019842.21"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "무족권 봐야지. MBC에서 방송 하니까 이번 주에 꼭 봐.",
+			"new_word": "무족권",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "장소/조직",
+					"value": "MBC"
+				},
+				{
+					"key": "날짜/기간/계절",
+					"value": "이번 주"
+				}
+			],
+			"turn_id": "019842-8",
+			"utterance_id": "019842.22"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "만약에 놓쳐서 못 봤으면 웨이브에 들어가서 볼 수 있어.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "장소/조직",
+					"value": "웨이브"
+				}
+			],
+			"turn_id": "019842-8",
+			"utterance_id": "019842.23"
+		},
+		{
+			"speaker": "speakerC",
+			"text": "알겠어ㅋㅋ. 내가 꼭 보고 나서 너희들한테 제일 먼저 알려줄게.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [],
+			"turn_id": "019842-8",
+			"utterance_id": "019842.24"
+		}
+	]
+}

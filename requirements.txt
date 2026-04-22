@@ -1,0 +1,22 @@
+# 허깅페이스 생태계 및 sLLM 파인튜닝(LoRA, 양자화 관련 패키지요)
+transformers
+datasets
+peft
+accelerate
+bitsandbytes
+
+# RAG 파이프라인과 Vector DB 관련 패키지
+langchain
+langchain-community
+langchain-huggingface
+langchain-chroma
+sentence-transformers
+chromadb
+faiss-cpu
+
+# torch는 본인 컴에 알아서 맞춰서 하쇼
+# torch
+
+# API Key 관리 패키지
+python-dotenv
+requests

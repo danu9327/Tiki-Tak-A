@@ -1,0 +1,245 @@
+{
+	"info": {
+		"category": "한국어SNS 멀티턴 대화",
+		"id": "024874",
+		"topic": "미용과 패션",
+		"keyword": "작은 사치 - 키링",
+		"speaker": {
+			"speakerAId": "0017",
+			"speakerASex": "여자",
+			"speakerAAge": "20",
+			"speakerBId": "0107",
+			"speakerBSex": "남자",
+			"speakerBAge": "20",
+			"speakerCId": null,
+			"speakerCSex": null,
+			"speakerCAge": null
+		}
+	},
+	"utterances": [
+		{
+			"speaker": "speakerA",
+			"text": "요즘 초딩은 진짜 이해를 할 수가 없음...",
+			"new_word": "초딩",
+			"speech_act": "친교 및 잡담",
+			"slot": [],
+			"turn_id": "024874-1",
+			"utterance_id": "024874.1"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "너 동생 말하는겨ㅋㅋ? 나이차가 많이 나니까 이해하기 힘들 수도 있지ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [],
+			"turn_id": "024874-1",
+			"utterance_id": "024874.2"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "그른가ㅋㅋ. 요즘 MZ에게 유행하는 게 뭐임?",
+			"new_word": "MZ",
+			"speech_act": "정보 요청",
+			"slot": [],
+			"turn_id": "024874-2",
+			"utterance_id": "024874.3"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "단언컨대 키링이 가장 유행하고 있음ㅋㅋ. 초등학생은 물론이고 어른들도 키링 진짜 많이 구매함...",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "024874-2",
+			"utterance_id": "024874.4"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "오... 키링이 갑자기 왜 유행하고 있는거임?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링"
+				}
+			],
+			"turn_id": "024874-3",
+			"utterance_id": "024874.5"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "경기가 안 좋아지면서 가볍게 기분 전환을 할 수 있는 아이템이거든. 그래서 키링 구매를 작은 사치라고도 함ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링"
+				}
+			],
+			"turn_id": "024874-3",
+			"utterance_id": "024874.6"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "오... 근데 키링을 구매해서 어디다 쓴담..? 어른이 왜 키링을 사는거지ㅋㅋ? 단순 수집용인가?",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링"
+				}
+			],
+			"turn_id": "024874-4",
+			"utterance_id": "024874.7"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "노놉. 키링을 가방에 다는 게 패션 아이템으로 꼽히고 있음ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링; 가방; 패션 아이템"
+				},
+				{
+					"key": "평가/후기/감상",
+					"value": "yes"
+				}
+			],
+			"turn_id": "024874-4",
+			"utterance_id": "024874.8"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "아... 나는 내 동생이 책가방에 키링 달고 다니길래 초등학생에게만 유행하고 있는 줄ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "책가방; 키링"
+				}
+			],
+			"turn_id": "024874-5",
+			"utterance_id": "024874.9"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "아냐ㅋㅋ. 그냥 요즘 유행 중이라고 생각하면 돼ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [],
+			"turn_id": "024874-5",
+			"utterance_id": "024874.10"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "키링을 가방에 달고 다니는 연예인 있음ㅋㅋ? 이런 유행에 연예인이 안 했을리 없자나.",
+			"new_word": "",
+			"speech_act": "정보 요청",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링; 가방"
+				}
+			],
+			"turn_id": "024874-6",
+			"utterance_id": "024874.11"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "레드벨벳 조이랑 블랙핑크 제니도 키링을 가방에 달았었음ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "정보 제공",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "블랙핑크 제니; 레드벨벳 조이"
+				},
+				{
+					"key": "제품/서비스",
+					"value": "키링; 가방"
+				}
+			],
+			"turn_id": "024874-6",
+			"utterance_id": "024874.12"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "트렌드를 이끄는 제니가 키링을 가방에 달았다고 하니까 나도 하고 싶어지네...",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "인물",
+					"value": "제니"
+				},
+				{
+					"key": "제품/서비스",
+					"value": "키링; 가방"
+				}
+			],
+			"turn_id": "024874-7",
+			"utterance_id": "024874.13"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "너도 귀여운 키링 사서 가방에 달고 다녀ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링; 가방"
+				}
+			],
+			"turn_id": "024874-7",
+			"utterance_id": "024874.14"
+		},
+		{
+			"speaker": "speakerA",
+			"text": "네이버에서 키링 구경이나 해야지ㅋㅋ. 귀여운 거 있으면 바로 구매해야겠다ㅋㅋ.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "키링"
+				},
+				{
+					"key": "장소/조직",
+					"value": "네이버"
+				}
+			],
+			"turn_id": "024874-8",
+			"utterance_id": "024874.15"
+		},
+		{
+			"speaker": "speakerB",
+			"text": "ㅇㅇ. 어떤 가방에 키링을 걸 지 먼저 생각하고 키링 구경하삼.",
+			"new_word": "",
+			"speech_act": "친교 및 잡담",
+			"slot": [
+				{
+					"key": "제품/서비스",
+					"value": "가방; 키링"
+				}
+			],
+			"turn_id": "024874-8",
+			"utterance_id": "024874.16"
+		}
+	]
+}
