@@ -2,7 +2,15 @@
 .env
 
 # data가 너무 커져요 빈 폴더만 남기기
-data/rag/location/
-data/rag/statistics/
-data/risk/
-data/sft/
+data/rag/location/*
+data/rag/statistics/*
+data/risk/psych/*
+data/risk/youth/*
+data/sft/*
+
+# .gitkeep 파일은 예외로 추적하여 폴더 구조를 유지함
+!data/rag/location/.gitkeep
+!data/rag/statistics/.gitkeep
+!data/risk/psych/.gitkeep
+!data/risk/youth/.gitkeep
+!data/sft/.gitkeep
