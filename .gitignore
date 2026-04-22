@@ -1,7 +1,7 @@
 # API Key
 .env
 
-# data가 너무 커져요
+# data가 너무 커져요 빈 폴더만 남기기
 data/rag/location/
 data/rag/statistics/
 data/risk/
