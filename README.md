@@ -47,6 +47,6 @@ Tiki-Tak-A/
 │   ├── rag_code/           # Vector DB 구축
 │   ├── risk_code/          # 위험도 스코어링 모델 학습
 │   ├── sft_code/           # 또래 페르소나 SFT 학습
-│   └── main_app.py         # 통합 실행 진입점
-└── requirements.txt
+│   └── main_app.py         # 최종 통합 실행 코드
+└── requirements.txt        # 필요한 라이브러리 정리
 ```
