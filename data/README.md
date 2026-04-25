@@ -45,7 +45,7 @@ data/
 ##### AI Hub에서 수집한 상담 데이터들(심리상담데이터(psych)/아동청소년상담데이터(youth))
 ##### risk/psych/는 심리상담 데이터 (AI Hub) | 우울증 등 심리 상담 세션
 ##### risk/youth는 아동·청소년 상담 데이터 (AI Hub) | 청소년 대상 상담 세션
-##### src/risk_code/1_merge_data.py로 data/risk에 있는 모든 데이터를 정규화 및 위험도 분류 3등급 정의 후 통합->total_risk_data.jsonl, 상담 페르소나를 위한 sft_from_risk_data.jsonl도 생성
+##### src/risk_code/1_merge_data.py로 data/risk에 있는 모든 데이터를 정규화 및 위험도 분류 3등급 정의 후 통합->`total_risk_data.jsonl`, 상담 페르소나를 위한 `sft_from_risk_data.jsonl`도 생성
 ##### 총 상담데이터 4387건
 ##### <분류>
 ##### 안전: 3220건, 주의:996건, 위험:171건
@@ -54,12 +54,12 @@ data/
 ## 또래 페르소나 챗봇 모델 학습
 ##### 또래스러운 MZ는 아니라도 친근한 대화를 위한 데이터
 #### <sft_from_risk_data.jsonl>
-##### sft_from_risk_data.jsonl(risk 데이터에서 생성된 상담 페르소나 원본) 362,107건 너무너무 많음
+##### `sft_from_risk_data.jsonl`(risk 데이터에서 생성된 상담 페르소나 원본) 362,107건 너무너무 많음
 ##### src/sft_code/filter_counseling.py로 30,000건으로 품질 필터링 후 추출
 ##### 추출한 30,000건을 "또래 페르소나"를 위해 src/sft_code/convert_tone.py로 말투 변환(EXAONE_7.8B 로컬 모델 활용)->무려 6시간....
 ##### 자세한 필터링 및 변환 설명은->[src/sft_code/README.md](../src/sft_code/README.md)
 #### <sft_from_sns_data.jsonl>
 ##### 한국어 sns데이터 json이 176,605개 또 너무너무너무 많음
 ##### 토픽별(건강및식음료,경제및사회,과학기술,문화생활및여가,미용과패션,스포츠및e스포츠,여행관광및명소,정치,콘텐츠소비)
-##### 균등하게 11,000건만 선택해서 통합한게 sft_from_sns_data.jsonl
+##### 균등하게 11,000건만 선택해서 통합한게 `sft_from_sns_data.jsonl`
 ##### 균등 추출에 대한 자세한 설명은 해야겟지?->[src/sft_code/README.md](../src/sft_code/README.md)

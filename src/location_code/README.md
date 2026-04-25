@@ -4,8 +4,13 @@
 ###### 진짜 공공데이터 포털 사용하기 어렵더라구요 에휴
 
 ## 실행순서:
-##### python src/location_code/1_fetch_api.py   # API 수집
-##### python src/location_code/2_unify.py       # 통합 및 전처리
+
+```bash
+python src/location_code/1_fetch_api.py # API 수집
+```
+```bash
+python src/location_code/2_unify.py       # 통합 및 전처리
+```
 ##### unified_centers_lite.json가 최종 결과
 
 ## 1_fetch_api.py 설명
@@ -13,7 +18,7 @@
 ##### api키로 아래 정보 수집
 ##### 청소년을 위한 지원시설 위치정보 9개 -> data/rag/location/.json
 ##### 수집한 api 총 9개
-|#|데이터셋|저장 파일|
+|-|데이터셋|저장 파일|
 |-|-------|--------|
 |1|청소년디딤센터 위치현황|청소년디딤센터_위치현황.json|
 |2|아동청소년보호기관정보 위치현황|아동청소년보호기관정보_위치현황.json|
