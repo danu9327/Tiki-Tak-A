@@ -17,7 +17,7 @@ python src/sft_code/2_convert_tone.py        # 또래 말투 변환 (약 6시간
 python src/sft_code/3_merge_data.py          # 데이터 통합
 ```
 ```bash
-python src/sft_code/4_train_exaone.py        # LoRA SFT 학습 (약 22시간....ㅎ)
+PYTORCH_ALLOC_CONF=expandable_segments:True python src/sft_code/4_train_exaone.py        # LoRA SFT 학습 (약 9시간....ㅎ)
 ```
 |단계|입력|출력|
 |---|----|----|
@@ -71,7 +71,7 @@ python src/sft_code/4_train_exaone.py        # LoRA SFT 학습 (약 22시간....
 
 ## 4_train_exaone.py
 ##### 진짜 간당간당한 학습 파라미터들 공유 아래 참고
-###### 32077MiB /  32607MiB <- 거의 터지기 직전
+###### 16619MiB /  32607MiB <- LoRA는 위대하다
 ##### 하이퍼파라미터
 
 |항목|값|

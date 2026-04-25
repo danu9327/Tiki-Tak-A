@@ -5,7 +5,7 @@ from chromadb.utils import embedding_functions
 from tqdm import tqdm
 
 # 1. 경로 설정
-BASE_DIR = "/home/user/Tiki-Tak-A/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 INPUT_JSON_PATH = os.path.join(BASE_DIR, "data/rag/statistics/db_input/final_rag_chunks.json")
 # Vector DB가 실제로 저장될 물리적 폴더
 DB_DIR = os.path.join(BASE_DIR, "data/rag/vector_db") 

@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader, random_split
 from transformers import AutoTokenizer
 
 # 1. 경로 설정
-BASE_DIR = "/home/user/Tiki-Tak-A"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 JSONL_PATH = os.path.join(BASE_DIR, "data/risk/total_risk_data.jsonl")
 
 class TotalRiskDataset(Dataset):

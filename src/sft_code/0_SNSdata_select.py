@@ -10,8 +10,9 @@ from collections import defaultdict
 from tqdm import tqdm
 
 # 경로 설정
-SOURCE_DIR = "/home/user/Tiki-Tak-A/data/jsons"
-OUTPUT_PATH = "/home/user/Tiki-Tak-A/data/sft/sft_from_sns_data.jsonl"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SOURCE_DIR = os.path.join(BASE_DIR, "data/jsons")
+OUTPUT_PATH = os.path.join(BASE_DIR, "data/sft/sft_from_sns_data.jsonl")
 SAMPLE_SIZE = 11000
 SEED = 42
 

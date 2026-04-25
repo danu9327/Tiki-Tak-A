@@ -7,7 +7,7 @@ import math
 
 load_dotenv()
 API_KEY = os.getenv("PUBLIC_DATA_API_KEY")
-BASE_DIR = "/home/user/Tiki-Tak-A/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 API_CONFIGS = [
     ###########위치 관련 9개 데이터##################

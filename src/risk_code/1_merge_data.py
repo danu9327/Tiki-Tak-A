@@ -3,7 +3,7 @@ import json
 from tqdm import tqdm
 
 # 1. 경로 설정 (리눅스 환경 최적화)
-BASE_DIR = "/home/user/Tiki-Tak-A"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 RISK_ROOT = os.path.join(BASE_DIR, "data", "risk")
 RISK_OUTPUT = os.path.join(RISK_ROOT, "total_risk_data.jsonl")
 SFT_OUTPUT = os.path.join(BASE_DIR, "data", "sft", "sft_from_risk_data.jsonl")

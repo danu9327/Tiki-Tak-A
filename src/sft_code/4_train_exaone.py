@@ -8,12 +8,12 @@ from transformers import (
     TrainingArguments,
     Trainer,
 )
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, TaskType
+from peft import LoraConfig, get_peft_model, TaskType
 
 # ============================================================
 # 경로 설정
 # ============================================================
-BASE_DIR = "/home/user/Tiki-Tak-A"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MODEL_PATH = os.path.join(BASE_DIR, "models/base/EXAONE")
 SFT_DATA_PATH = os.path.join(BASE_DIR, "data/sft/sft_total.jsonl")
 OUTPUT_DIR = os.path.join(BASE_DIR, "models/tuned/exaone_sft_lora")
@@ -21,7 +21,7 @@ OUTPUT_DIR = os.path.join(BASE_DIR, "models/tuned/exaone_sft_lora")
 # ============================================================
 # 하이퍼파라미터
 # ============================================================
-MAX_LENGTH = 384
+MAX_LENGTH = 512
 EPOCHS = 3
 LEARNING_RATE = 1e-4
 LORA_R = 16
@@ -67,7 +67,7 @@ class SFTDataset(Dataset):
         output = item["output"]
 
         # EXAONE 채팅 템플릿
-        prompt = f"[|system|]{SYSTEM_PROMPT}[|endofturn|]\n[|user|]{instruction}[|endofturn|]\n[|assistant|]"
+        prompt = f"[|system|]{SYSTEM_PROMPT}[|endofturn|]\n[|user|]{instruction}\n[|assistant|]"
         full_text = prompt + output + "[|endofturn|]"
 
         # 전체 토크나이징
@@ -146,9 +146,7 @@ def train():
     except NotImplementedError:
         model.get_output_embeddings = lambda: model.lm_head
 
-    # 5. kbit training 준비 + LoRA
-    model = prepare_model_for_kbit_training(model)
-
+    # 5. LoRA
     lora_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
         r=LORA_R,

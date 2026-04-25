@@ -2,8 +2,9 @@ import json
 import os
 import re
 
-SOURCE_DIR = "/home/user/Tiki-Tak-A/data/rag/location"
-OUTPUT_PATH = "/home/user/Tiki-Tak-A/data/rag/location/unified_centers_lite.json"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SOURCE_DIR = os.path.join(BASE_DIR, "data/rag/location")
+OUTPUT_PATH = os.path.join(BASE_DIR, "data/rag/location/unified_centers_lite.json")
 
 def normalize_phone(phone):
     """전화번호를 일관된 하이픈 형식으로 정규화"""

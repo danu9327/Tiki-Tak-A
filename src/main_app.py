@@ -7,12 +7,12 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModelForSequen
 from peft import PeftModel
 
 # 1. 경로 설정
-BASE_DIR = "/home/user/Tiki-Tak-A"
-EXAONE_PATH = "/home/user/Tiki-Tak-A/models/EXAONE"
-EXAONE_LORA_PATH = "/home/user/Tiki-Tak-A/models/exaone-sft-final"
-RISK_MODEL_PATH = "/home/user/Tiki-Tak-A/models/risk_model_final"
-VECTOR_DB_PATH = "/home/user/Tiki-Tak-A/data/rag/vector_db"
-LOCATION_DATA_PATH = "/home/user/Tiki-Tak-A/data/rag/location/unified_centers_lite.json"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EXAONE_PATH = os.path.join(BASE_DIR, "models/base/EXAONE")
+EXAONE_LORA_PATH = os.path.join(BASE_DIR, "models/tuned/exaone_sft_lora/final")
+RISK_MODEL_PATH = os.path.join(BASE_DIR, "models/tuned/risk_model_final")
+VECTOR_DB_PATH = os.path.join(BASE_DIR, "data/rag/vector_db")
+LOCATION_DATA_PATH = os.path.join(BASE_DIR, "data/rag/location/unified_centers_lite.json")
 
 class TikiTakaSystem:
     def __init__(self):

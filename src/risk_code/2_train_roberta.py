@@ -17,8 +17,9 @@ LABEL_NAMES = ["안전", "주의", "위험"]
 NUM_LABELS = len(LABEL_NAMES)
 
 # 1. 모델 및 토크나이저 세팅
-MODEL_NAME = "/home/user/Tiki-Tak-A/models/base/roberta-large"
-SAVE_PATH = "/home/user/Tiki-Tak-A/models/tuned/risk_model_final"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MODEL_NAME = os.path.join(BASE_DIR, "models/base/roberta-large")
+SAVE_PATH = os.path.join(BASE_DIR, "models/tuned/risk_model_final")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=NUM_LABELS)

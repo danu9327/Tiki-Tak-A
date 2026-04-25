@@ -12,7 +12,7 @@ import time
 # ============================================================
 # 경로 설정
 # ============================================================
-BASE_DIR = "/home/user/Tiki-Tak-A"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MODEL_PATH = os.path.join(BASE_DIR, "models/base/EXAONE")
 INPUT_PATH = os.path.join(BASE_DIR, "data/sft/sft_counseling_filtered.jsonl")
 OUTPUT_PATH = os.path.join(BASE_DIR, "data/sft/sft_counseling_peer_tone.jsonl")

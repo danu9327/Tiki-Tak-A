@@ -2,7 +2,7 @@ import os
 import json
 import re
 
-BASE_DIR = "/home/user/Tiki-Tak-A/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROCESSED_DIR = os.path.join(BASE_DIR, "data/rag/statistics/processed")
 RAG_DB_INPUT_DIR = os.path.join(BASE_DIR, "data/rag/statistics/db_input")
 

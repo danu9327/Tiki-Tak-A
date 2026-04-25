@@ -2,7 +2,7 @@ import os
 import chromadb
 from chromadb.utils import embedding_functions
 
-BASE_DIR = "/home/user/Tiki-Tak-A/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DB_DIR = os.path.join(BASE_DIR, "data/rag/vector_db")
 
 def test_search(query_text, n_results=3):

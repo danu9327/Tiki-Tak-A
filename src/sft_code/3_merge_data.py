@@ -2,12 +2,13 @@ import os
 import json
 import random
 
-BASE_DIR = "/home/user/Tiki-Tak-A"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 COUNSELING_SFT = os.path.join(BASE_DIR, "data/sft/sft_counseling_peer_tone.jsonl")
 SNS_SFT = os.path.join(BASE_DIR, "data/sft/sft_from_sns_data.jsonl")
 OUTPUT_PATH = os.path.join(BASE_DIR, "data/sft/sft_total.jsonl")
 
 SEED = 42
+SNS_CAP = 30000
 random.seed(SEED)
 
 def load_jsonl(path):
@@ -25,7 +26,12 @@ def main():
     sns = load_jsonl(SNS_SFT)
     
     print(f"📊 상담 SFT: {len(counseling)}건")
-    print(f"📊 SNS SFT: {len(sns)}건")
+    print(f"📊 SNS SFT 원본: {len(sns)}건")
+
+    # SNS 데이터 캡 적용 (1:1 비율)
+    if len(sns) > SNS_CAP:
+        sns = random.sample(sns, SNS_CAP)
+        print(f"📊 SNS SFT 샘플링 후: {len(sns)}건 ({SNS_CAP}건으로 제한)")
     
     # 2. 출처 태그 추가 (나중에 분석/디버깅용)
     for entry in counseling:

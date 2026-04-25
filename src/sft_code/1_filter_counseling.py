@@ -12,7 +12,7 @@ from tqdm import tqdm
 # ============================================================
 # 경로 설정
 # ============================================================
-BASE_DIR = "/home/user/Tiki-Tak-A"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 INPUT_PATH = os.path.join(BASE_DIR, "data/sft/sft_from_risk_data.jsonl")
 FILTERED_PATH = os.path.join(BASE_DIR, "data/sft/sft_counseling_filtered.jsonl")
 

@@ -4,7 +4,7 @@ import pdfplumber  # 표 추출 전용
 from tqdm import tqdm
 import json
 
-BASE_DIR = "/home/user/Tiki-Tak-A/"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SOURCE_DIR = os.path.join(BASE_DIR, "data/rag/statistics/source")
 PROCESSED_DIR = os.path.join(BASE_DIR, "data/rag/statistics/processed")
 
