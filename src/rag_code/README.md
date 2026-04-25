@@ -5,13 +5,13 @@
 
 ## 실행순서
 ```bash
-src/rag_code/1_extract_text.py #로 텍스트 추출(PDF->4개의 json)
+src/rag_code/1_extract_text.py   #로 텍스트 추출(PDF->4개의 json)
 ```
 ```bash
-src/rag_code/2_chunking.py #로 추출 텍스트 적당히 자르면서 통합 json만들기(4개의 json->1개의 json)
+src/rag_code/2_chunking.py       #로 추출 텍스트 적당히 자르면서 통합 json만들기(4개의 json->1개의 json)
 ```
 ```bash
-src/rag_code/3_build_chroma.py #로 Vector DB구축(1개의 json->data/rag/vector_db)
+src/rag_code/3_build_chroma.py   #로 Vector DB구축(1개의 json->data/rag/vector_db)
 ```
 |단계|입력|출력|
 |---|----|----|

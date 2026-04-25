@@ -15,8 +15,9 @@
 
 ##### python=3.12
 ##### 각자 컴퓨타에 맞는 torch 설치 알아서 하쇼
-##### pip install -r requirements.txt
-
+```bash
+pip install -r requirements.txt
+```
 ## 실행하는 방법(내 컴에선 일케 하니 잘되요)
 ##### > 전제 조건으로 모든 데이터 전처리 및 학습 완료된 모델이 준비되야해여
 ```bash

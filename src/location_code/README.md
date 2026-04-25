@@ -6,19 +6,19 @@
 ## 실행순서:
 
 ```bash
-python src/location_code/1_fetch_api.py # API 수집
+python src/location_code/1_fetch_api.py   # API 수집
 ```
 ```bash
 python src/location_code/2_unify.py       # 통합 및 전처리
 ```
-##### unified_centers_lite.json가 최종 결과
+##### `unified_centers_lite.json`가 최종 결과
 
 ## 1_fetch_api.py 설명
 ##### .env(절대 지켜!)에 내 API키 있음 "PUBLIC_DATA_API_KEY=발급받은_키"
 ##### api키로 아래 정보 수집
 ##### 청소년을 위한 지원시설 위치정보 9개 -> data/rag/location/.json
 ##### 수집한 api 총 9개
-|-|데이터셋|저장 파일|
+||데이터셋|저장 파일|
 |-|-------|--------|
 |1|청소년디딤센터 위치현황|청소년디딤센터_위치현황.json|
 |2|아동청소년보호기관정보 위치현황|아동청소년보호기관정보_위치현황.json|
@@ -37,11 +37,11 @@ python src/location_code/2_unify.py       # 통합 및 전처리
 |돌연변이 구형|6번|body가 리스트로 한번 더 감싸진 형태|
 
 ## 2_unify.py  설명
-##### src/location_code/2_unify로 하나의 통합 json으로 전처리
+##### `src/location_code/2_unify`로 하나의 통합 json으로 전처리
 ##### (name, address, region, phone, source, extra)로 중구난방인 칼럼을 정리
 ##### 전화번호 정규화 추가 예시: 020000000->02-000-0000
 ##### RAG 검색을 위한 text 필드 추가
-##### 최종 결과물은 data/rag/location/unified_centers_lite.json이거임
+##### 최종 결과물은 `data/rag/location/unified_centers_lite.json`이거임
 
 ### 아래처럼 싹다 정리
 ```
