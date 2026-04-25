@@ -3,14 +3,34 @@
 
 # data가 너무 커져요 빈 폴더만 남기기
 data/rag/location/*
-data/rag/statistics/*
+data/rag/statistics/source/*
+data/rag/statistics/processed/*
+data/rag/statistics/db_input/*
+data/rag/statistics/db_input/*
+data/rag/vector_db/*
 data/risk/psych/*
 data/risk/youth/*
+data/risk/total_risk_data.jsonl
 data/sft/*
+
+# model도 너무 커요!
+models/base/roberta-large/*
+models/base/EXAONE/*
+models/tuned/exaone_sft_lora/*
+models/tuned/risk_model_final/*
+
 
 # .gitkeep 파일은 예외로 추적하여 폴더 구조를 유지함
 !data/rag/location/.gitkeep
-!data/rag/statistics/.gitkeep
+!data/rag/statistics/source/.gitkeep
+!data/rag/statistics/processed/.gitkeep
+!data/rag/statistics/db_input/.gitkeep
+!data/rag/vector_db/.gitkeep
 !data/risk/psych/.gitkeep
 !data/risk/youth/.gitkeep
 !data/sft/.gitkeep
+
+!models/base/roberta-large/.gitkeep
+!models/base/EXAONE/.gitkeep
+!models/tuned/exaone_sft_lora/.gitkeep
+!models/tuned/risk_model_final/.gitkeep

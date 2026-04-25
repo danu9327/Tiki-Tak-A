@@ -7,7 +7,7 @@ import math
 
 load_dotenv()
 API_KEY = os.getenv("PUBLIC_DATA_API_KEY")
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = "/home/user/Tiki-Tak-A/"
 
 API_CONFIGS = [
     ###########위치 관련 9개 데이터##################
@@ -43,13 +43,32 @@ API_CONFIGS = [
     #    "base_url": "https://apis.data.go.kr/1383000/yhis/YouthLvgFcltPoiService/getYouthLvgFcltPoiList"
     #},
     { # 7 1-5, 6이랑 다른 유형 홀리몰리
-        "name": "청소년시설정보_목록", 
+        "name": "여성·가족·청소년·권익시설정보_위치현황", 
         "category": "location",
         "base_url": "http://apis.data.go.kr/1383000/facility/selectList",
         "extra_params": {
             "type": "json" 
         }
     },
+    #{ # 8
+    #    "name": "청소년성문화센터_위치현황", 
+    #    "category": "location",
+    #    "base_url": "http://apis.data.go.kr/1383000/spis/teenagerCenterService/getTeenagerCenterList",
+    #    "extra_params": {
+    #        "type": "json" 
+    #    }
+    #},
+    #{ # 9
+    #    "name": "청소년지원시설관심지점_위치현황", 
+    #    "category": "location",
+    #    "base_url": "https://apis.data.go.kr/1383000/yhis/YouthUseFcltPoiService/getYouthUseFcltPoiList",
+    #    "extra_params": {
+    #        "type": "json",
+    #        "fcltNm": "",
+    #        "ctpvNm": "",
+    #        "sggNm": ""
+    #    }
+    #},
 ]
 
 def fetch_all_pages(config):

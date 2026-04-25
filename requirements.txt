@@ -13,6 +13,9 @@ langchain-chroma
 sentence-transformers
 chromadb
 faiss-cpu
+PyMuPDF
+tqdm
+pdfplumber
 
 # torch는 본인 컴에 알아서 맞춰서 하쇼
 # torch
