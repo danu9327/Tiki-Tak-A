@@ -11,7 +11,7 @@
 ##### - 베이스/튜닝 모델: [models/README.md](models/README.md)
 
 ## 프로젝트 소개
-![Tiki-Tak-A 소개 그림](data/project_concept.jpg)
+![Tiki-Tak-A 소개 그림](data/project_concept.png)
 
 ## 환경구축 귀찮
 
