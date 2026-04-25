@@ -25,13 +25,13 @@
 ### python src/main_app.py
 
 ### 모델 불러오는 순서:
-#### 위험도 판별 모델 (RoBERTa) 로드
-#### RAG 시스템 (ChromaDB) 연결
-#### EXAONE 또래 페르소나 챗봇 로드
-#### 위치정보 데이터 로드
+#### 1.위험도 판별 모델 (RoBERTa) 로드
+#### 2.RAG 시스템 (ChromaDB) 연결
+#### 3.EXAONE 또래 페르소나 챗봇 로드
+#### 4.위치정보 데이터 로드
 
 ## 프로젝트 구조
-
+```
 Tiki-Tak-A/
 ├── data/
 │   ├── rag/
@@ -50,6 +50,7 @@ Tiki-Tak-A/
 │   ├── sft_code/           # 또래 페르소나 SFT 학습
 │   └── main_app.py         # 통합 실행 진입점
 └── requirements.txt
+```
 
 ## 데이터
 ### 아동·청소년 상담데이터(AI Hub) / 심리상담데이터(AI Hub) -> data/risk/.json
