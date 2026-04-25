@@ -1,14 +1,14 @@
 # 베이스 모델이랑 튜닝 완료된 모델 설명
 
 ## 베이스모델과 파인튜닝한 모델을 소개할게여
-
+```
 models/
 ├── base/
 │   ├── EXAONE/             # 또래 페르소나 SFT 베이스 모델
 │   └── roberta-large/      # 위험도 스코어링 베이스 모델
 └── tuned/
 └── risk_model_final/   # 위험도 스코어링 파인튜닝 완료 모델
-
+```
 ## 베이스 모델
 
 ### EXAONE-3.5-7.8B (LG AI Research)

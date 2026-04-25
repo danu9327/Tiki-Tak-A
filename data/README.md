@@ -1,7 +1,7 @@
 # 데이터
 
 ## 학습 및 RAG에 들어가는 모든 데이터에 대한 간략한 설명(언제 다 써)
-
+```
 data/
 ├── risk/               # 위험도 스코어링 모델 학습 원본 데이터
 │   ├── psych/          # 심리상담 데이터 (AI Hub)
@@ -12,7 +12,7 @@ data/
 │   ├── statistics/     # 청소년 실태조사 PDF 및 처리 결과
 │   └── vector_db/      # ChromaDB Vector DB (구축 완료본)
 └── total_risk_data.jsonl   # 위험도 학습용 최종 통합 데이터
-
+```
 ### 아동·청소년 상담데이터(AI Hub) / 심리상담데이터(AI Hub) -> data/risk/.json
 ### 한국어 SNS 멀티턴 대화 데이터(AI Hub) / 온라인 구어체 말뭉치 데이터(AI Hub) -> data/sft/.json
 ### 청소년을 위한 지원시설 위치정보 9개 -> data/rag/location/.json
