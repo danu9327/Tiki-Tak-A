@@ -6,7 +6,7 @@ models/
 │   ├── EXAONE/             # 또래 페르소나 SFT 베이스 모델
 │   └── roberta-large/      # 위험도 스코어링 베이스 모델
 └── tuned/
-└── risk_model_final/   # 위험도 스코어링 파인튜닝 완료 모델
+└── risk_model_final/       # 위험도 스코어링 파인튜닝 완료 모델
 ```
 ## 베이스 모델
 ### EXAONE-3.5-7.8B (LG AI Research)
@@ -37,5 +37,5 @@ models/
 |모델|크기|역할|입력 → 출력|
 |----|---|---|-----------|
 |jhgan/ko-sbert-nli|110M|텍스트 → 숫자벡터 변환|문장 → 768차원 벡터|
-|klue/roberta-large|330M||위험도 분류|문장 → [안전/주의/위험]|
+|klue/roberta-large|330M|위험도 분류|문장 → [안전/주의/위험]|
 |EXAONE 7.8B|7.8B|답변 생성|대화 → 다음 문장|
