@@ -20,6 +20,9 @@ pdfplumber
 # torch는 본인 컴에 알아서 맞춰서 하쇼
 # torch
 
+# 백엔드
+flask
+
 # API Key 관리 패키지
 python-dotenv
 requests
