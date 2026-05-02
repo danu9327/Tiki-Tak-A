@@ -29,13 +29,17 @@ LABEL_NAMES = ["안전", "주의", "위험"]
 RAG_DISTANCE_THRESHOLD = 1.5
 
 SYSTEM_PROMPT = (
+    "너의 이름은 Tiki야. "
     "너는 청소년 또래 친구처럼 편하게 대화하면서도, "
     "상대방의 고민을 진심으로 들어주고 도움을 줄 수 있는 상담 챗봇이야. "
-    "예의바르게 반말을 사용하고, 아래 원칙을 꼭 지켜줘.\n"
-    "상대방의 외모, 성격, 행동을 탓하거나 문제의 원인을 상대방에게 돌리지 마. "
+    "반말을 사용하고, 아래 원칙을 꼭 지켜줘.\n"
+    "1. 공감 먼저: 상대방의 감정을 먼저 알아주고 인정해줘. '그랬구나', '힘들었겠다' 같은 말을 먼저 해줘.\n"
+    "2. 절대 하면 안 되는 것: 상대방의 외모, 성격, 행동을 탓하거나 문제의 원인을 상대방에게 돌리지 마. "
     "'네가 뭘 잘못한 거 아니야?', '네 행동에 문제가 있는 건 아닌지' 같은 말은 절대 하지 마.\n"
-    "상대방 편을 들어주고 조언은 부드럽게 짧게 답해줘"
-
+    "3. 편 들어주기: 상대방이 괴롭힘이나 폭력을 당했다고 하면, 무조건 상대방 편에 서줘. "
+    "'그건 네 잘못이 아니야', '그런 행동은 잘못된 거야' 같은 말을 해줘.\n"
+    "4. 조언은 부드럽게: 해결책을 제시할 때는 강요하지 말고 '이런 방법도 있어' 식으로 제안해줘.\n"
+    "5. 짧게 답해: 한 번에 너무 길게 말하지 말고, 2~3문장 정도로 답해줘."
 )
 
 RAG_TRIGGER_KEYWORDS = [
@@ -47,17 +51,25 @@ RAG_TRIGGER_KEYWORDS = [
 ]
 
 DANGER_KEYWORDS = [
+    # 자살/자해
     "죽고 싶", "죽을래", "죽어버리", "죽을 거", "죽었으면", "죽고싶",
     "자살", "자해", "손목", "옥상", "뛰어내리", "목매", "약 먹",
     "유서", "마지막", "끝내고 싶", "사라지고 싶", "없어지고 싶",
     "살고 싶지 않", "살기 싫", "태어나지 말", "안 태어났으면",
+    # 폭력/학대
     "때려", "때리", "맞아", "맞았", "폭력", "학대", "구타",
     "성폭력", "성추행", "강간", "성폭행", "몰카", "불법촬영",
+    "성범죄", "성피해", "성적 수치", "강제 추행",
     "강제로", "억지로", "만져", "만졌", "신체 접촉",
-    "가출", "도망", "집 나가", "집 나왔", "쫓겨났",
+    "당했", "당한 적",  # 간접적 피해 표현
+    # 가정 위기
+    "가출", "도망", "집 나가", "집 나왔", "집 나온", "쫓겨났",
+    "밖에서 자", "갈 데가 없", "갈 곳이 없", "노숙",
     "버림받", "방치", "방임", "굶겨", "밥을 안 줘",
+    # 공포/위협
     "무서워", "두려워", "겁나", "위협", "협박", "죽이겠",
     "칼", "흉기", "찌르", "피가 나", "피가 났",
+    # 따돌림/괴롭힘
     "왕따", "따돌림", "괴롭힘", "집단폭행", "린치",
     "돈 빼앗", "돈 뺏", "셔틀", "빵셔틀",
 ]
@@ -208,32 +220,7 @@ def search_stats(query, models, n_results=2):
     docs = results["documents"][0]
     distances = results["distances"][0]
     return [doc for doc, dist in zip(docs, distances) if dist < RAG_DISTANCE_THRESHOLD]
-def retrieve_candidates_from_list(user_input, location_data, top_k=8):
-    # 검색에 불필요한 단어들 제거
-    stopwords = ["살아", "살아요", "옆에", "근처", "어디", "있어", "알려줘", "동네"]
-    keywords = [k for k in user_input.split() if len(k) >= 2 and k not in stopwords]
-    
-    if not keywords:
-        return []
-    
-    scored_results = []
-    for item in location_data:
-        score = 0
-        addr = item.get('address', '')
-        name = item.get('name', '')
-        
-        for kw in keywords:
-            # 주소에 포함되면 높은 점수 (지역 기반이므로)
-            if kw in addr: score += 10
-            # 시설 이름에 포함되면 중간 점수
-            if kw in name: score += 5
-            
-        if score > 0:
-            scored_results.append((score, item))
-    
-    # 점수 높은 순으로 정렬
-    scored_results.sort(key=lambda x: x[0], reverse=True)
-    return [res[1] for res in scored_results[:top_k]]
+
 
 # ============================================================
 # 응답 생성 함수들
@@ -244,7 +231,7 @@ def build_prompt(history, user_msg, risk_level, rag_context=None):
         stats_block = "\n".join(f"- {doc}" for doc in rag_context)
         user_msg = f"[참고 통계]\n{stats_block}\n\n{user_msg}"
     if risk_level == 2:
-        system += "\n지금 상대방이 많이 힘든 상황임을 인지해. 예의바르게 걱정 어린 말투로 먼저 괜찮은지 확인해줘."
+        system += "\n지금 상대방이 많이 힘든 상황임을 인지해. 걱정 어린 말투로 먼저 괜찮은지 확인해줘."
     elif risk_level == 1:
         system += "\n상대방이 조금 힘든 것 같아. 공감해주고 조심스럽게 물어봐줘."
 
@@ -278,10 +265,10 @@ def generate_response(user_msg, history, models, risk_level, rag_context=None):
 
 def generate_support_offer(user_msg, history, models):
     system = (
+        "너는 청소년 또래 친구야. 상대방이 많이 힘든 상황인 것 같아. "
         "전문 상담을 받아보는 게 어떨지 자연스럽게 제안해줘. "
-        "상담이나 지원시설의 도움을 받는게 어떤지 자연스럽게 제안해줘"
         "동네를 알려주면 근처 지원시설을 찾아줄 수 있다고 말해줘. "
-        "반말로, 짧고 예의바르게, 부담 안 주는 톤으로."
+        "반말로, 짧게, 부담 안 주는 톤으로."
     )
     prompt = f"[|system|]{system}[|endofturn|]\n"
     for turn in history[-2:]:
@@ -294,7 +281,7 @@ def generate_support_offer(user_msg, history, models):
 def generate_comfort_after_search(models):
     system = (
         "너는 청소년 또래 친구야. 방금 상대방에게 상담 지원시설 정보를 알려줬어. "
-        "혼자 감당하지 않아도 된다고 따뜻하게 응원해줘. 반말로, 짧고 예의바르게, 진심 어린 톤으로."
+        "혼자 감당하지 않아도 된다고 따뜻하게 응원해줘. 반말로, 짧게, 진심 어린 톤으로."
     )
     prompt = f"[|system|]{system}[|endofturn|]\n[|user|]응원해줘\n[|assistant|]"
     result = _generate(models, prompt, max_new_tokens=60, temperature=0.8)
@@ -306,7 +293,7 @@ def generate_decline_response(user_msg, models):
         "너는 청소년 또래 친구야. 상대방에게 상담 지원시설을 제안했는데 거절했어. "
         "괜찮다고 하면서, 언제든 필요하면 말하라고 해줘. "
         "청소년 전화 1388은 24시간 무료라는 것도 자연스럽게 알려줘. "
-        "짧게, 예의바르게 부담 안 주는 톤으로."
+        "반말로, 짧게, 부담 안 주는 톤으로."
     )
     prompt = f"[|system|]{system}[|endofturn|]\n[|user|]{user_msg}\n[|assistant|]"
     result = _generate(models, prompt, max_new_tokens=80)
@@ -316,50 +303,201 @@ def generate_decline_response(user_msg, models):
 # ============================================================
 # 시설 검색
 # ============================================================
-def recommend_centers_with_llm(user_location_input, models):
-    """
-    LLM이 위치 데이터(JSON)를 직접 보고 가장 적합한 시설을 추천함
-    """
-    candidates = retrieve_candidates_from_list(user_location_input, models["location_data"])
-    print(f"DEBUG: 후보군 개수 -> {len(candidates)}")
-    candidates_text = ""
-    for i, c in enumerate(candidates):
-        candidates_text += f"[{i+1}] {c['name']} | 주소: {c['address']} | 전화: {c.get('phone', '1388')}\n"
 
-    system_msg = (
-        "너는 위치 정보 전문가야. 사용자의 현재 위치를 바탕으로 가장 적절한 청소년 지원시설(상담센터, 쉼터 등)을 추천해줘.\n"
-        "아래 제공된 [시설 목록]에서만 선택해야 하며, 사용자가 말한 위치와 지리적으로 가장 가까운 곳 2~3곳을 골라줘.\n"
-        "시설 이름, 주소, 전화번호를 친절하게 안내하고, 왜 그곳을 추천했는지 짧게 설명해줘.\n"
-        "만약 적절한 곳이 없다면 솔직하게 말하고 1388을 안내해."
-    )
+# 지역명에서 제거할 불용어
+LOCATION_STOPWORDS = ["쪽", "근처", "근방", "동네", "살아", "살고", "있어", "인데", "이야", "나", "나는", "나도", "저는", "난"]
+
+# 지역명 뒤에 붙는 한국어 조사들 (긴 것부터 매칭해야 함)
+LOCATION_PARTICLES = ["에서", "으로", "에도", "에는", "에", "은", "는", "이", "가", "을", "를", "도", "로", "의"]
+
+def strip_particles(word):
+    """단어 끝의 한국어 조사를 제거"""
+    for p in LOCATION_PARTICLES:
+        if word.endswith(p) and len(word) > len(p) + 1:
+            return word[:-len(p)]
+    return word
+
+def extract_location_keywords(text):
+    """사용자 입력에서 지역 키워드 추출 (불용어·조사 제거, 지역 단위 우선)"""
+    # 불용어 제거
+    cleaned = text
+    for sw in LOCATION_STOPWORDS:
+        cleaned = cleaned.replace(sw, " ")
     
-    user_msg = f"사용자 위치: {user_location_input}\n\n[시설 목록]\n{candidates_text}"
+    # 단어 분리 후 조사 제거
+    raw_keywords = [k.strip() for k in cleaned.split() if len(k.strip()) >= 2]
+    keywords = [strip_particles(kw) for kw in raw_keywords]
+    keywords = [kw for kw in keywords if len(kw) >= 2]  # 조사 제거 후 너무 짧아진 것 제외
     
-    prompt = f"[|system|]{system_msg}[|endofturn|]\n[|user|]{user_msg}\n[|assistant|]"
+    # 구/군/시/동 단위 키워드와 일반 키워드 분리
+    specific = []  # 구, 군, 시, 동 단위
+    general = []   # 시도 단위 (서울, 부산 등)
+    
+    for kw in keywords:
+        if any(kw.endswith(suffix) for suffix in ["구", "군", "시", "동", "읍", "면"]):
+            specific.append(kw)
+        elif kw in ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종",
+                     "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"]:
+            general.append(kw)
+        else:
+            # "해운대", "강남" 같은 축약형도 잡기 위해
+            specific.append(kw)
+    
+    return specific, general
 
-    # 3. LLM 추론
-    tokenizer = models["tokenizer"]
-    exaone = models["exaone"]
-    inputs = tokenizer(prompt, return_tensors="pt").to(models["exaone_device"])
-
-    with torch.no_grad():
-        output_ids = exaone.generate(
-            **inputs,
-            max_new_tokens=300,
-            do_sample=True,
-            temperature=0.7,
-            pad_token_id=tokenizer.pad_token_id,
-            eos_token_id=tokenizer.eos_token_id,
-        )
-
-    new_tokens = output_ids[0][inputs["input_ids"].shape[1]:]
-    recommendation = tokenizer.decode(new_tokens, skip_special_tokens=True)
-    return recommendation.split("[|endofturn|]")[0].strip()
+def search_centers(location_text, models, max_results=5, issue_type=None):
+    """지역 키워드로 지원시설 검색. 위험 유형별 적합한 시설 우선 추천.
+    
+    issue_type: "violence" (가정폭력/학대), "sexual" (성범죄), 
+                "runaway" (가출), "mental" (자살/자해/우울), "general" (기타)
+    """
+    specific, general = extract_location_keywords(location_text)
+    
+    if not specific and not general:
+        return []
+    
+    all_centers = models["location_data"]
+    
+    # 이름에 이런 키워드가 있으면 비상담 시설로 제외
+    EXCLUDE_NAME_KEYWORDS = [
+        "학원", "교습소", "어린이집", "유치원", "학교", "태권도",
+        "피아노", "미술", "음악", "영어", "수학", "보습",
+        "입시", "코딩", "체육관", "수영장", "새일센터",
+    ]
+    
+    # 위험 유형별 우선 시설 매핑
+    ISSUE_PRIORITY = {
+        "violence": {
+            "sources": ["청소년쉼터", "청소년상담복지센터", "청소년지원시설관심지점"],
+            "name_keywords": ["쉼터", "상담", "보호", "위기"],
+        },
+        "sexual": {
+            "sources": ["청소년성문화센터", "청소년상담복지센터", "여성·가족·청소년·권익시설정보"],
+            "name_keywords": ["성문화", "성폭력", "해바라기", "상담", "여성"],
+        },
+        "runaway": {
+            "sources": ["청소년쉼터", "청소년자립지원관", "청소년지원시설관심지점"],
+            "name_keywords": ["쉼터", "자립", "보호", "일시"],
+        },
+        "mental": {
+            "sources": ["청소년상담복지센터", "청소년디딤센터", "청소년복지시설관심지점정보"],
+            "name_keywords": ["상담", "디딤", "정신", "마음"],
+        },
+        "general": {
+            "sources": ["청소년상담복지센터", "청소년복지시설관심지점정보", "청소년지원시설관심지점"],
+            "name_keywords": ["상담", "복지", "지원"],
+        },
+    }
+    
+    # 모든 유효한 source (비상담 시설 제외용)
+    ALL_VALID_SOURCES = [
+        "청소년상담복지센터", "청소년쉼터", "청소년자립지원관",
+        "청소년디딤센터", "청소년성문화센터",
+        "청소년복지시설관심지점정보", "청소년지원시설관심지점",
+        "여성·가족·청소년·권익시설정보",
+    ]
+    
+    if issue_type is None:
+        issue_type = "general"
+    
+    priority_config = ISSUE_PRIORITY.get(issue_type, ISSUE_PRIORITY["general"])
+    
+    def is_valid_center(center):
+        source = center.get("source", "")
+        name = center.get("name", "")
+        if not any(s in source for s in ALL_VALID_SOURCES):
+            return False
+        if any(ex in name for ex in EXCLUDE_NAME_KEYWORDS):
+            return False
+        return True
+    
+    def get_relevance_score(center):
+        """위험 유형에 대한 관련도 점수"""
+        source = center.get("source", "")
+        name = center.get("name", "")
+        score = 0
+        # 우선 source 매칭
+        if any(s in source for s in priority_config["sources"]):
+            score += 10
+        # 이름에 관련 키워드
+        if any(kw in name for kw in priority_config["name_keywords"]):
+            score += 5
+        return score
+    
+    # 지역 매칭
+    matched = []
+    for center in all_centers:
+        if not is_valid_center(center):
+            continue
+        
+        addr = center.get("address", "")
+        region = center.get("region", "")
+        name = center.get("name", "")
+        searchable = f"{addr} {region} {name}"
+        
+        is_specific = specific and any(kw in searchable for kw in specific)
+        is_general = general and any(kw in searchable for kw in general)
+        
+        if is_specific:
+            matched.append(("specific", center))
+        elif is_general:
+            matched.append(("general", center))
+    
+    # 구체적 매칭 우선, 없으면 광역
+    specific_results = [(c, get_relevance_score(c)) for tier, c in matched if tier == "specific"]
+    general_results = [(c, get_relevance_score(c)) for tier, c in matched if tier == "general"]
+    
+    results = specific_results if specific_results else general_results
+    
+    # 관련도 점수 순 정렬
+    results.sort(key=lambda x: -x[1])
+    
+    return [c for c, score in results[:max_results]]
 
 
 def is_declining(text):
-    declines = ["아니", "괜찮아", "됐어", "안해", "싫어", "필요없어", "나중에"]
+    declines = ["괜찮아", "됐어", "안 해", "안해", "필요없", "나중에", "싫어", "안 할"]
+    # "아니"는 단독이거나 문장 시작일 때만 (오탐 방지)
+    if text.strip() in ["아니", "아니요", "아니야", "아닌데"]:
+        return True
     return any(d in text for d in declines)
+
+
+def is_accepting(text):
+    accepts = [
+        "응", "어", "ㅇㅇ", "ㅇ", "좋아", "해줘", "알려줘", "부탁",
+        "해볼래", "해볼게", "받고 싶", "받고싶", "그래", "원해",
+        "찾아줘", "네", "당연", "물론", "해봐", "해 줘",
+        "갈게", "가볼게", "가고 싶", "가볼래",
+    ]
+    # 거절이 우선 (거절 키워드가 있으면 수락으로 판정하지 않음)
+    if is_declining(text):
+        return False
+    return any(a in text for a in accepts)
+
+
+def detect_issue_type(history):
+    """대화 히스토리에서 위험 유형을 판별"""
+    combined = " ".join(t["user"] for t in history)
+    
+    sexual_kws = ["성폭력", "성추행", "강간", "성폭행", "만져", "만졌", "억지로",
+                  "강제로", "이상한 짓", "성범죄", "성피해", "몰카", "불법촬영"]
+    violence_kws = ["때려", "때리", "맞아", "맞았", "폭력", "학대", "구타",
+                    "물건 던", "소리 지르", "칼", "흉기", "협박"]
+    runaway_kws = ["가출", "집 나온", "집 나왔", "집 나가", "밖에서 자",
+                   "갈 데가 없", "갈 곳이 없", "노숙", "쫓겨났", "쉼터"]
+    mental_kws = ["죽고 싶", "자살", "자해", "살기 싫", "우울", "손목",
+                  "사라지고 싶", "끝내고 싶"]
+    
+    if any(kw in combined for kw in sexual_kws):
+        return "sexual"
+    if any(kw in combined for kw in runaway_kws):
+        return "runaway"
+    if any(kw in combined for kw in violence_kws):
+        return "violence"
+    if any(kw in combined for kw in mental_kws):
+        return "mental"
+    return "general"
 
 
 # ============================================================
@@ -404,14 +542,27 @@ def chat():
             messages.append({"type": "text", "content": reply})
             history.append({"user": user_input, "assistant": reply})
             session["state"] = AppState.CHAT
-        else:
-            # 수락 → 동네 질문
-            reply = "그러면 너 사는 동네가 어디야? (예: 강남구, 수원시, 부산 해운대)"
+            return jsonify({"messages": messages, "risk_level": 0})
+
+        if is_accepting(user_input):
+            reply = "혹시 너 사는 동네를 물어봐서 지원시설을 추천해줘도 될까? (예: 강남구, 수원시, 부산 해운대)"
             messages.append({"type": "text", "content": reply})
             history.append({"user": user_input, "assistant": reply})
             session["state"] = AppState.AWAITING_LOCATION
+            return jsonify({"messages": messages, "risk_level": 0})
 
-        return jsonify({"messages": messages, "risk_level": 0})
+        # 수락도 거절도 아닌 일반 대화 → 정상 응답하고 상태 유지
+        risk_level = classify_risk(user_input, history, models)
+        rag_context = None
+        if should_search_rag(user_input, risk_level):
+            rag_context = search_stats(user_input, models)
+        response = generate_response(user_input, history, models, risk_level, rag_context)
+        messages.append({"type": "text", "content": response})
+        # 부드럽게 다시 제안
+        messages.append({"type": "text", "content": "그리고 아까 얘기인데, 근처 상담센터 찾아볼까? 원하면 말해줘!"})
+        history.append({"user": user_input, "assistant": response})
+        # 상태 유지 (AWAITING_CONSENT 그대로)
+        return jsonify({"messages": messages, "risk_level": risk_level})
 
     # ── 동네 입력 대기 중 ──
     if state == AppState.AWAITING_LOCATION:
@@ -420,43 +571,53 @@ def chat():
             messages.append({"type": "text", "content": reply})
             history.append({"user": user_input, "assistant": reply})
             session["state"] = AppState.CHAT
-        else:
-            # 1. 여기서 이미 LLM이 추천 멘트를 다 만들어옴 (약 3~4초 소요)
-            recommendation = recommend_centers_with_llm(user_input, models)
-            
-            if recommendation:
-                # 2. 여기서 '또' generate_comfort_after_search를 부르지 말고, 
-                # 그냥 추천 결과만 보내거나 고정된 응원 멘트를 뒤에 붙여줘.
-                # 정 응원하고 싶으면 recommend_centers_with_llm 프롬프트에 "마지막에 응원도 해줘"라고 넣는게 효율적이야!
-                
-                messages.append({
-                    "type": "centers", 
-                    "location": user_input, 
-                    "centers": recommendation  # LLM이 만든 추천 텍스트
-                })
-                
-                # 추가 LLM 호출 대신 고정 멘트 활용 (속도 향상)
-                comfort_fixed = "너를 항상 응원해. 혼자 고민하지 마! 😊"
-                messages.append({"type": "text", "content": comfort_fixed})
-                
-                history.append({"user": user_input, "assistant": f"{recommendation}\n{comfort_fixed}"})
-            else:
-                reply = f"미안해, {user_input} 근처에서 시설을 못 찾았어. 1388로 전화해보는 건 어때?"
-                messages.append({"type": "text", "content": reply})
-                history.append({"user": user_input, "assistant": reply})
-            
-            session["state"] = AppState.CHAT
+            return jsonify({"messages": messages, "risk_level": 0})
 
-        return jsonify({"messages": messages, "risk_level": 0})
+        # 지역명인지 판단: 대화 맥락에서 위험 유형 판별 후 시설 검색
+        issue_type = detect_issue_type(history)
+        centers = search_centers(user_input, models, issue_type=issue_type)
+        if centers:
+            center_list = []
+            for c in centers:
+                center_list.append({
+                    "name": c.get("name", "이름 없음"),
+                    "address": c.get("address", "주소 없음"),
+                    "phone": c.get("phone", "1388"),
+                })
+            messages.append({"type": "centers", "location": user_input, "centers": center_list})
+            comfort = generate_comfort_after_search(models)
+            messages.append({"type": "text", "content": comfort})
+            history.append({"user": user_input, "assistant": comfort})
+            session["state"] = AppState.CHAT
+            return jsonify({"messages": messages, "risk_level": 0})
+
+        # 시설 검색 결과 없음 → 지역명이 아닌 일반 대화일 수 있음
+        # 일반 대화로 응답하고 동네를 다시 물어봄
+        risk_level = classify_risk(user_input, history, models)
+        rag_context = None
+        if should_search_rag(user_input, risk_level):
+            rag_context = search_stats(user_input, models)
+        response = generate_response(user_input, history, models, risk_level, rag_context)
+        messages.append({"type": "text", "content": response})
+        messages.append({"type": "text", "content": "참, 아까 동네 알려주면 근처 지원시설 찾아줄 수 있어! 사는 곳이 어디야?"})
+        history.append({"user": user_input, "assistant": response})
+        # 상태 유지 (AWAITING_LOCATION 그대로)
+        return jsonify({"messages": messages, "risk_level": risk_level})
 
     # ── 일반 대화 ──
     risk_level = classify_risk(user_input, history, models)
 
     # 사용자가 직접 도움/상담을 요청하는지 감지
     HELP_REQUEST_KEYWORDS = [
-        "도움", "도와줘", "상담 받고", "상담받고", "상담 어디", "상담센터",
-        "신고", "어디에 말해", "누구한테 말해", "알려줘", "센터 찾아",
-        "쉼터 어디", "지원시설", "연락처", "전화번호",
+        "도움", "도와줘", "도와줄", "도와주",
+        "상담 받고", "상담받고", "상담 어디", "상담센터", "상담하고",
+        "신고", "어디에 말해", "누구한테 말해", "누구한테 말할",
+        "알려줘", "센터 찾아", "찾아줘",
+        "쉼터 어디", "쉼터 있어", "쉼터 갈", "쉼터 같은",
+        "지원시설", "연락처", "전화번호",
+        "어떻게 해야", "어떡해", "어떻게 해",
+        "어디 가야", "어디로 가", "갈 수 있는 데",
+        "도와줄 수 있", "도움받", "도움 받",
     ]
     user_requests_help = any(kw in user_input for kw in HELP_REQUEST_KEYWORDS)
 
